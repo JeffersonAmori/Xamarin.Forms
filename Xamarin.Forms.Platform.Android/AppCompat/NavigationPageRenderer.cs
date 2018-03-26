@@ -331,6 +331,10 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 				UpdateToolbar();
 			else if (e.PropertyName == NavigationPage.BackButtonTitleProperty.PropertyName)
 				UpdateToolbar();
+			else if (e.PropertyName == NavigationPage.BarHeightProperty.PropertyName)
+			{
+				UpdateToolbar();
+			}
 		}
 
 		protected override void OnLayout(bool changed, int l, int t, int r, int b)
@@ -342,6 +346,9 @@ namespace Xamarin.Forms.Platform.Android.AppCompat
 			base.OnLayout(changed, l, t, r, b);
 
 			int barHeight = ActionBarHeight();
+
+			if (Element.IsSet(NavigationPage.BarHeightProperty))
+				barHeight = Element.BarHeight;
 
 			if (barHeight != _lastActionBarHeight && _lastActionBarHeight > 0)
 			{

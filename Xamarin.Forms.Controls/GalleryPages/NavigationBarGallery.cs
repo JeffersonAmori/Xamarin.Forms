@@ -13,8 +13,6 @@ namespace Xamarin.Forms.Controls
 
 			NavigationPage.SetTitleView(this, CreateTitleView());
 
-			NavigationPage.SetNavigationBarHeight(this, 150);
-
 			Content = new StackLayout
 			{
 				Children = {
@@ -123,6 +121,16 @@ namespace Xamarin.Forms.Controls
 								Title = "NavigationBar Gallery - Legacy";
 							else
 								Title = null;
+						})
+					},
+					new Button {
+						Text = "Toggle BarHeight",
+						Command = new Command (() => {
+
+							if (rootNavPage.BarHeight == -1)
+								rootNavPage.BarHeight= 450;
+							else
+								rootNavPage.ClearValue(NavigationPage.BarHeightProperty);
 						})
 					}
 				}
